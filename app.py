@@ -69,8 +69,8 @@ def handle_userinput(user_question):
 
 def main():
     load_dotenv()
-    st.set_page_config(page_title="Chat with multiple PDFs",
-                       page_icon=":books:")
+    st.set_page_config(page_title="Chat PDF",
+                       page_icon="💬")
     st.write(css, unsafe_allow_html=True)
 
     if "conversation" not in st.session_state:
@@ -78,15 +78,29 @@ def main():
     if "chat_history" not in st.session_state:
         st.session_state.chat_history = None
 
-    st.header("Chat with multiple PDFs :books:")
+    st.header("Chat with your PDFs 💬")
     user_question = st.text_input("Ask a question about your documents:")
     if user_question:
         handle_userinput(user_question)
 
     with st.sidebar:
-        st.subheader("Your documents")
+        st.header("Upload Your documents [PDFs] :books:")
+        st.markdown('''
+        ## Built with 
+        - [StreamLit](https://streamlit.io/) (UI & Backend-Communication)
+        - [LangChain](https://python.langchain.com/docs/get_started/introduction.html) (Backend)
+        - [OpenAI](https://platform.openai.com/) (LLM & Embeddings)
+        - [HuggingFace AI](https://huggingface.co/) (LLM & Embeddings)
+        ''')
+        with st.expander('Important Note'):
+            st.markdown('''
+            - Why is the HuggingFace AI model slow? 
+                - This model runs on 2 core CPU (hosted) by running an Opensource language model [google flan-t5-xxl](https://huggingface.co/google/flan-t5-xxl), hence the results might take time and incorrect at times.
+            - How to make this faster? 
+                - It is a working prototype, and can utilise OpenAI models to produce better and faster results. Update the embeddings and LLM model inside the code from [github](https://github.com/likhithharish/Chat_PDF) and use your own OpenAI access key - [PAID](https://openai.com/pricing). 
+            ''')
         pdf_docs = st.file_uploader(
-            "Upload your PDFs here and click on 'Process'", accept_multiple_files=True)
+            "Upload your PDFs here and click on 'Process', ", accept_multiple_files=True)
         if st.button("Process"):
             with st.spinner("Processing"):
                 # get pdf text
@@ -97,7 +111,7 @@ def main():
 
                 # create vector store
                 vectorstore = get_vectorstore(text_chunks)
-
+                st.write('You can start your prompts!')
                 # create conversation chain
                 st.session_state.conversation = get_conversation_chain(
                     vectorstore)
