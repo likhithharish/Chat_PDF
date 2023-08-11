@@ -6,7 +6,7 @@ The app is hosted at HuggingFace platform : [LIVE APP](https://huggingface.co/sp
 
 # DEMO
 
-<a href='https://youtu.be/gvms4imKEu4' target='blank'><img src='assets/Demo.png'></a>
+<a href='https://youtu.be/gvms4imKEu4' target='_blank'><img src='assets/Demo.png'></a>
 
 # Summary
 
