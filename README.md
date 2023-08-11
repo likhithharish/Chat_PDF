@@ -5,6 +5,8 @@ The app is hosted at HuggingFace platform : [LIVE APP](https://huggingface.co/sp
 - Limitation: The live app runs on a 2-core CPU and using Google [flan-t5-xxl](https://huggingface.co/google/flan-t5-xxl) model, and not OpenAI GPT3.5-Turbo / OpenAI GPT4.
 - Live Demo using OpenAI GPT3.5-Turbo [HERE]()
 
+{% include youtube.html id="gvms4imKEu4" %}
+
 # Summary
 
 The MultiPDF Chat App is a Python application that allows you to chat with multiple PDF documents. You can ask questions about the PDFs using natural language, and the application will provide relevant responses based on the content of the documents. This app utilizes a language model(OpenAI / Huggingface AI) to generate accurate answers to your queries. Please note that the app will only respond to questions related to the loaded PDFs.
